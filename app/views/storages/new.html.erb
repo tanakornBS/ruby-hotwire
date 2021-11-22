@@ -1,0 +1,11 @@
+<h1>Storages#new</h1>
+<div>
+    <%= form_with model: @storage do |form| %>
+        <%= form.text_field :name, placeholder: "name" %>
+        <br>
+        <%= form.number_field :qty, placeholder: "Quantity" %>
+        <br>
+        <%= form.submit "Add"%>
+    <% end %>
+</div>
+

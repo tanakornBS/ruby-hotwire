@@ -1,0 +1,25 @@
+<h1>index</h1>
+
+<div class="search">
+    <%= form_with url:"/storages/search", method: :get do |form|%>
+        <%= form.text_field :search_text %>
+        <%= form.submit "Search"%>
+    <% end %>
+</div>
+
+<%= link_to "New", new_storage_path %>
+
+<table border=1>
+  <tr>
+    <td>Name</td>
+    <td>Quantity</td>
+  </tr>
+  <% @fruit.each do |f| %>
+    <tr>
+      <td><%= f.name %></td>
+      <td><%= f.qty %></td>
+      <td><%= link_to "Edit", edit_storage_path(f) %></td>
+      <td><%= link_to "Remove", f, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

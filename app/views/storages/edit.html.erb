@@ -1,0 +1,6 @@
+<h1>Storages#edit</h1>
+<%= form_with model: @storage , method: :get do |form| %>
+  <%= form.text_field :name, placeholder: "name" , value: @fruit.name%>
+  <%= form.number_field :qty, placeholder: "Quantity" , value: @fruit.qty%>
+  <%= form.submit %>
+<% end %>
