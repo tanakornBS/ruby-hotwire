@@ -1,0 +1,28 @@
+<div class="bg-white rounded overflow-hidden shadow-lg mt-32 p-10 w-1/2 mx-auto my-0">
+  <div class="w-1/2 my-0 mx-auto">
+    <h2 class="text-2xl text-gray-700 font-bold my-5 mb-10">Change your password</h2>
+    <div>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <p class="text-red-600"><%= render "devise/shared/error_messages", resource: resource %></p>
+      <%= f.hidden_field :reset_password_token %>
+
+      <div class="field">
+        <%= f.label :password, "New password",class: "block text-gray-700 text-sm font-bold -mb-4" %><br />
+        <% if @minimum_password_length %>
+          <em class="block text-gray-700 text-sm font-bold -mb-4">(<%= @minimum_password_length %> characters minimum)</em><br />
+        <% end %>
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password",class: "bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-pink-400 transition duration-200" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, "Confirm new password", class: "block text-gray-700 text-sm font-bold -mb-4 mt-4" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-pink-400 transition duration-200" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Change my password", class: "shadow bg-pink-500 hover:bg-pink-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded transition duration-200 mt-20 w-full"%>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

@@ -13,3 +13,54 @@
  *= require_tree .
  *= require_self
  */
+ table{
+     padding: 5px;
+ }
+ td{
+     padding: 10px;
+ }
+ .img-item{
+     width: 150px;
+     height: 150px;
+ }
+ .font-name{
+    font-family: 'Ubuntu', sans-serif;
+ }
+ nav{
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+ }
+/* body{
+    font-family: 'Varela Round', sans-serif;
+} */
+/* nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-right: 50px;
+    padding-left: 50px;
+    color: #3DB2FF;
+    border-bottom: solid 2px #3DB2FF;
+
+}
+nav h3{
+    font-size: 25px;
+} */
+/* .sigout-nav{
+    transition: .2s;
+    width: 100px;
+    padding: 10px;
+    border: none;
+    margin-top: 20px;
+    background: #FF2442;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+.sigout-nav:hover{
+    transition: .2s;
+    background: white;
+    color: #FF2442;
+} */

@@ -1,39 +1,45 @@
 class StoragesController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :current_fruit, only: [:show, :edit, :update, :destroy]
 
   def index
     @fruit = Storage.all
   end
 
-  def show 
-  end
+ 
 
   def new
     @fruit = Storage.new
   end
 
   def create
-    fruit = Storage.create(fruit_params)
+    @fruit = Storage.new(storage_params)
+    @fruit.user = current_user
+    if @fruit.save
+      redirect_to root_path
+    end
 
-    redirect_to fruit_path(fruit)
   end
 
   def edit
-    if params[:name]
-      @fruit.name = params[:name]
-      @fruit.qty = params[:qty]
-      @fruit.save
-      redirect_to root_path
+    if storage_params.present?
+      @fruit.update(storage_params)
+        redirect_to root_path
     end
+    p "------------------"
+    p current_fruit
   end
 
   def update
     @fruit = Storage.find(params[:id])
-    if @fruit .update(fruit_params)
+    p params[:id]
+    p storage_params
+    if @fruit.update(params[:name, :qty, :main_image])
+      
       redirect_to root_path
     end
-
-    # redirect_to fruit_path(@fruit)
+    redirect_to root_path
     
   end
 
@@ -50,12 +56,14 @@ class StoragesController < ApplicationController
 
   private
 
-  def fruit_params
-    params.require(:fruit).permit(:name, :qty)
+  def storage_params
+    params.permit(:name, :qty, :main_image)  
   end
 
   def current_fruit
+    p "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     @fruit = Storage.find(params[:id])
+    p @fruit
   end
 
 end

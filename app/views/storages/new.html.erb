@@ -1,11 +1,19 @@
-<h1>Storages#new</h1>
-<div>
-    <%= form_with model: @storage do |form| %>
-        <%= form.text_field :name, placeholder: "name" %>
-        <br>
-        <%= form.number_field :qty, placeholder: "Quantity" %>
-        <br>
-        <%= form.submit "Add"%>
-    <% end %>
+<div class="bg-white rounded overflow-hidden shadow-lg mt-32 p-10 w-1/2 mx-auto my-0">
+    <div class="w-1/2 my-0 mx-auto">
+        <h1 class="text-2xl text-gray-700 font-bold my-5 mb-10">Create new item</h1>
+            <div>
+                <%= form_with url: "/storages" do |form| %>
+                    <%= form.text_field :name, placeholder: "name" ,class: "bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition duration-200 " %>
+                    <br>
+                    <%= form.number_field :qty, placeholder: "Quantity", class: "bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition duration-200 mt-4" %>
+                    <br>
+                    <div class="my-5">
+                        <%= form.label :main_image %>
+                        <%= form.file_field :main_image %>
+                    </div>
+                    <%= form.submit "Create",class: "shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded transition duration-200 float-right mt-10 w-full "%>
+                <% end %>
+                    
+            </div>
+    </div>
 </div>
-

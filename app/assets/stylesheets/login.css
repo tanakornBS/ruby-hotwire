@@ -1,0 +1,110 @@
+.login-block{ 
+    border-radius: 15px;
+    width: 25%;
+    margin: 0 auto;
+    padding: 30px;
+    background: white;
+    text-align: center;
+    padding:50px 10px ;
+    box-shadow: 2px 5px 10px #e0e0e0 ;
+}
+.login-page{
+
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+}
+.login-block img{
+    width: 100px;
+    height: 110px;
+    margin: 0 auto;
+    margin-top: 50px;
+
+}
+/*.login-block h2{
+    font-size: 32px;
+    color: #07293f;
+    margin-top: 50px;
+
+}*/
+
+.email-field{
+    transition: .2s;
+    border: solid 1px #fdedcf83;
+    background: #fdedcf83;
+    border-radius: 5px;
+    padding: 10px;
+    width: 70%;
+    margin-bottom: 20px;
+    margin-top: 80px;
+}
+.email-field:focus{
+    transition: .2s;
+    border: solid 1px #ffb73083;
+    background-color: white;
+    outline: none;
+}
+.password-field{
+    transition: .2s;
+    border: solid 1px #fdedcf83;
+    background: #fdedcf83;
+    border-radius: 5px;
+    padding: 10px;
+    width: 70%;
+    margin-bottom: 20px;
+}
+.password-field:focus{
+    transition: .2s;
+    border: solid 1px #ffb73083;
+    background-color: white;
+    outline: none;
+}
+
+.remem-check{
+    width: 75%;
+    margin: 0 auto;
+    text-align: left;
+    padding-top: 20px;
+    color: #ff687c;
+    font-size: 14px;
+}
+
+.signin-btt{
+    transition: .2s;
+    width: 70%;
+    padding: 10px;
+    border: none;
+    margin-top: 20px;
+    background: #FF2442;
+    border:#FF2442 solid 1px;
+    color: white;
+    border-radius: 5px;
+}
+.signin-btt:hover{
+    transition: .2s;
+    background: white;
+    color: #FF2442;
+    border:#FF2442 solid 1px;
+}
+.forgot-bar{
+    display: flex;
+    width: 75%;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 50px;
+
+}
+.signup-signin{
+    text-decoration: none;
+    font-size: 14px;
+    color: #FFB830;
+}
+.forgot-signin{
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 103px;
+    color: #FF2442;
+
+}

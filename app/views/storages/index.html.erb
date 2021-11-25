@@ -1,25 +1,46 @@
-<h1>index</h1>
+<div class="w-full">
+  <div class="my-0 mx-auto  w-3/4">
+    <div class="bg-white rounded overflow-hidden shadow-lg mt-32 p-10">
+      <div class="search my-0 mx-auto w-11/12">
+          <%= form_with url:"/storages/search",class: "search-form", method: :get do |form|%>
+              <%= form.text_field :search_text , placeholder: "Search...",class: "bg-gray-200 appearance-none border-2 border-gray-200 rounded-none rounded-l-lg w-11/12 ml-5 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 transition duration-200"%>    
+              <%= button_tag(type: "submit", class: "btn btn-default bg-gray-200 py-2 px-4 text-gray-700 -ml-1 rounded-none rounded-r-lg") do %>
+                  <i class="fas fa-search"></i>
+              <% end %>
+          <% end %>
+      </div>
+      <div class="flex justify-between w-11/12 my-0 mx-auto px-5 py-10 mt-10 ">
+        <h1 class="text-5xl font-semibold text-gray-700 font-name">List</h1>
+        <%= button_to "New", new_storage_path,:method => :get, class: "bg-green-400 hover:bg-green-500 text-white font-normal py-2 px-4 rounded transition duration-200"%>
+      </div>
 
-<div class="search">
-    <%= form_with url:"/storages/search", method: :get do |form|%>
-        <%= form.text_field :search_text %>
-        <%= form.submit "Search"%>
-    <% end %>
+      <table class="w-11/12 my-0 mx-auto text-center">
+        <tr class="border-b-2 border-indigo-300">
+          <td class="text-2xl font-medium p-5">Image</td>
+          <td class="text-2xl font-medium p-5" >Name</td>
+          <td class="text-2xl font-medium p-5" >Quantity</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <% @fruit.each do |f| %>
+        <% if can? :read, f%>
+          <tr class="divide-y divide-light-blue-400 mt-5">
+            <td class="py-5">
+            <%= image_tag f.main_image , class: "mx-auto my-0 img-item" %>
+      
+            </td>
+            <td class="text-blue-500 text-xl font-name font-semibold"><%= f.name %></td>
+            <td><%= f.qty %></td>
+            
+              <td><%= link_to '<i class="fas fa-pen text-yellow-500"></i>'.html_safe, edit_storage_path(f) %></td>
+              <td><%= link_to '<i class="fas fa-trash-alt text-red-600 p-3 rounded"></i>'.html_safe, f, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+          </tr>
+        <% end %>
+        <% end %>
+      </table>
+
+
+    </div>
+  </div>
 </div>
-
-<%= link_to "New", new_storage_path %>
-
-<table border=1>
-  <tr>
-    <td>Name</td>
-    <td>Quantity</td>
-  </tr>
-  <% @fruit.each do |f| %>
-    <tr>
-      <td><%= f.name %></td>
-      <td><%= f.qty %></td>
-      <td><%= link_to "Edit", edit_storage_path(f) %></td>
-      <td><%= link_to "Remove", f, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>

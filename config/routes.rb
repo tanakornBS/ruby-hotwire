@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users
   # get 'storages/index'
   # get 'storages/show'
   # get 'storages/new'
   # get 'storages/edit'
 
-  # get 'storages/search'
+  get 'storages/search'
 
   resources :storages
   
