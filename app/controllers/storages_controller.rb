@@ -7,7 +7,8 @@ class StoragesController < ApplicationController
     @fruit = Storage.all
   end
 
- 
+  def show 
+  end
 
   def new
     @fruit = Storage.new
@@ -23,24 +24,17 @@ class StoragesController < ApplicationController
   end
 
   def edit
-    if storage_params.present?
-      @fruit.update(storage_params)
-        redirect_to root_path
-    end
-    p "------------------"
-    p current_fruit
+    @fruit = Storage.find(params[:id])
   end
 
   def update
-    @fruit = Storage.find(params[:id])
-    p params[:id]
-    p storage_params
-    if @fruit.update(params[:name, :qty, :main_image])
-      
+    if @fruit.update(storage_params)
+      p "--------------------------------------"
+      p storage_params
       redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
     end
-    redirect_to root_path
-    
   end
 
   def destroy
@@ -61,9 +55,7 @@ class StoragesController < ApplicationController
   end
 
   def current_fruit
-    p "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     @fruit = Storage.find(params[:id])
-    p @fruit
   end
 
 end

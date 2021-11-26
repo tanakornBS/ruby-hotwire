@@ -5,11 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-msedge",
+            "type": "rdbg",
+            "name": "Debug current file with rdbg",
             "request": "launch",
-            "name": "Launch Edge against localhost",
-            "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}"
+            "script": "${file}",
+            "args": [],
+            "askParameters": true
+        },
+        {
+            "type": "rdbg",
+            "name": "Attach with rdbg",
+            "request": "attach"
         }
     ]
 }

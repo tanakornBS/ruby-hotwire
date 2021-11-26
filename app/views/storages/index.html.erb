@@ -26,8 +26,9 @@
         <% if can? :read, f%>
           <tr class="divide-y divide-light-blue-400 mt-5">
             <td class="py-5">
-            <%= image_tag f.main_image , class: "mx-auto my-0 img-item" %>
-      
+            <% if f.main_image.attached?%>
+             <%= image_tag f.main_image , class: "mx-auto my-0 img-item" %>
+            <% end %>
             </td>
             <td class="text-blue-500 text-xl font-name font-semibold"><%= f.name %></td>
             <td><%= f.qty %></td>
