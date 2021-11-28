@@ -1,13 +1,12 @@
 class StoragesController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :current_fruit, only: [:show, :edit, :update, :destroy]
-
   def index
     @fruit = Storage.all
   end
 
-  def show 
+  def show
+    @fruit = Storage.find(params[:id])
   end
 
   def new
@@ -19,8 +18,9 @@ class StoragesController < ApplicationController
     @fruit.user = current_user
     if @fruit.save
       redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
     end
-
   end
 
   def edit
@@ -28,9 +28,9 @@ class StoragesController < ApplicationController
   end
 
   def update
+    @fruit = Storage.find(params[:id])
+
     if @fruit.update(storage_params)
-      p "--------------------------------------"
-      p storage_params
       redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
@@ -38,24 +38,15 @@ class StoragesController < ApplicationController
   end
 
   def destroy
+    @fruit = Storage.find(params[:id])
     @fruit.destroy
 
-    redirect_to storages_path
-  end
-
-  def search
-    @fruit = Storage.where("name LIKE?","%#{params[:search_text]}%").map{|items| items}
-    render "index"
+    redirect_to root_path
   end
 
   private
-
-  def storage_params
-    params.permit(:name, :qty, :main_image)  
-  end
-
-  def current_fruit
-    @fruit = Storage.find(params[:id])
-  end
+    def storage_params
+      params.require(:storage).permit(:name, :qty, :main_image)
+    end
 
 end

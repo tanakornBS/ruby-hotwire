@@ -7,11 +7,11 @@
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder: "Email",class: "email-field"%>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder: "Email",class: "email-field shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
       </div>
 
       <div class="field">
-        <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password",class: "password-field"%>
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password",class: "password-field shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
       </div>
 
       <div class="remem-check">

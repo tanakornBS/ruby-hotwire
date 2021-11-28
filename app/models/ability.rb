@@ -15,7 +15,6 @@ class Ability
       can :manage, :all, user_id: user.id
       cannot :access, :rails_admin
       cannot :destroy, Storage
-
     end
 
   end
