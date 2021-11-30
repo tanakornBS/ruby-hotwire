@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Stockapp</title>
+
+    <title>Inventory Management</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -16,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <%= turbo_include_tags %>
   </head>
 
   <body>
@@ -32,7 +34,7 @@
               </svg>
             </button>
 
-            <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"></div>
+            <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0  z-10"></div>
 
             <div x-show="dropdownOpen" class="absolute right-0 mt-2 py-2 w-auto bg-white rounded-md shadow-xl z-20">
               <p class="block px-4 py-2 text-sm font-bold capitalize text-gray-700"><%= current_user.email %></p>

@@ -16,32 +16,37 @@
         <% end %>
       </div>
 
-      <table class="w-11/12 my-0 mx-auto text-center">
-        <tr class="border-b-2 border-indigo-300">
-          <td class="text-2xl font-medium p-5">Image</td>
-          <td class="text-2xl font-medium p-5" >Name</td>
-          <td class="text-2xl font-medium p-5" >Quantity</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <% @fruit.each do |f| %>
-          <% if can? :read, f%>
-            <tr class="divide-y divide-light-blue-400 mt-5">
-              <td class="py-5">
-              <% if f.main_image.attached?%>
-              <%= image_tag f.main_image , class: "mx-auto my-0 img-item" %>
-              <% end %>
-              </td>
-              <td class="text-blue-500 text-xl font-name font-semibold"><%= f.name %></td>
-              <td><%= f.qty %></td>
-              <td><%= link_to '<i class="fas fa-pen text-yellow-500 hover:bg-yellow-500 hover:text-white p-3 rounded transition duration-200"></i>'.html_safe, edit_storage_path(f) %></td>
-              <% if can? :destroy, f%>
-                <td><%= link_to '<i class="fas fa-trash-alt text-red-600 p-3 rounded hover:bg-red-600 hover:text-white transition duration-200"></i>'.html_safe, f, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              <% end %>
+          <table class="w-11/12 my-0 mx-auto text-center">
+            <tr class="border-b-2 border-indigo-300">
+              <td class="text-2xl font-medium p-5">Image</td>
+              <td class="text-2xl font-medium p-5" >Name</td>
+              <td class="text-2xl font-medium p-5" >Quantity</td>
+              <td></td>
+              <td></td>
             </tr>
-          <% end %>
-        <% end %>
-      </table>
+            <% @fruit.each do |f| %>
+              <% if can? :read, f%>
+              <%= turbo_stream_from "storages"%>
+              <%= turbo_frame_tag "storages" do %>
+                <tr class="divide-y divide-light-blue-400 mt-5">
+                  <td class="py-5">
+                  <% if f.main_image.attached?%>
+                  <%= image_tag f.main_image , class: "mx-auto my-0 img-item" %>
+                  <% end %>
+                  </td>
+                  <td class="text-blue-500 text-xl font-name font-semibold"><%= f.name %></td>
+                  <td><%= f.qty %></td>
+                  <td><%= link_to '<i class="fas fa-pen text-yellow-500 hover:bg-yellow-500 hover:text-white p-3 rounded transition duration-200"></i>'.html_safe, edit_storage_path(f) %></td>
+                  <% if can? :destroy, f%>
+                    <td><%= link_to '<i class="fas fa-trash-alt text-red-600 p-3 rounded hover:bg-red-600 hover:text-white transition duration-200"></i>'.html_safe, f, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <% end %>
+                </tr>
+                <%end%>
+              <% end %>
+            <% end %>
+          </table>
+
+        
 
 
     </div>
