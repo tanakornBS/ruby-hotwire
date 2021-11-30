@@ -31,6 +31,7 @@ class StoragesController < ApplicationController
     @fruit = Storage.find(params[:id])
 
     if @fruit.update(storage_params)
+      format.turbo_stream
       redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
